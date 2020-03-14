@@ -42,3 +42,11 @@ $ pip install -r requirements.txt
 ```
 $  uvicorn app:app --reload
 ```
+
+#### references
+
+- form data: 
+  - https://fastapi.tiangolo.com/tutorial/request-forms/
+- requests: 
+  - https://www.starlette.io/requests/ 
+  - https://fastapi.tiangolo.com/advanced/using-request-directly/ 
