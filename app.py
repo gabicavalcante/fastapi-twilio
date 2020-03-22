@@ -1,6 +1,7 @@
 import json
 import random
 from fastapi import FastAPI, Form, Request
+from pydantic import BaseModel
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio.request_validator import RequestValidator
 from dynaconf import settings
@@ -20,8 +21,12 @@ intent_ranking = {
     "ask_pizza": ["what type of pizza you want?"],
 }
 
+class Message(BaseModel):
+    sender: str 
+    message: str 
 
-def bot_replay(text: str) -> str:
+
+def bot_reply_intent(text: str) -> str:
     url = "http://localhost:5005/model/parse"
     payload = {"text": text}
     r = requests.post(url=url, data=json.dumps(payload))
@@ -31,6 +36,16 @@ def bot_replay(text: str) -> str:
     return intent_response
 
 
+def bot_reply(sender: str, message: str) -> str:
+    url = "http://localhost:5005/webhooks/rest/webhook"
+    payload = { "sender": sender, "message": message } 
+
+    r = requests.post(url=url, data=json.dumps(payload))
+
+    response = r.json()[0]["text"] 
+    return response
+
+
 @app.post("/bot")
 async def bot(From: str = Form(...), Body: str = Form(...)):
     resp = MessagingResponse()
@@ -38,10 +53,15 @@ async def bot(From: str = Form(...), Body: str = Form(...)):
 
     incoming_msg = Body.strip().lower()
 
-    response = bot_replay(incoming_msg)
+    response = bot_reply_intent(incoming_msg)
     msg.body(response)
     return str(msg)
 
+
+@app.post("/chat")
+async def chat(message: Message): 
+    response = bot_reply(message.sender, message.message)
+    return response
 
 @app.post("/security/bot")
 async def security_bot(request: Request):

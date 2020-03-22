@@ -1,5 +1,4 @@
 venv/
 .vscode/
 __pycache__/
-.secrets.toml
-rasa/
+.secrets.toml 
