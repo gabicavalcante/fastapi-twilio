@@ -43,7 +43,7 @@ async def bot(From: str = Form(...), Body: str = Form(...)):
     return str(msg)
 
 
-@app.post("/user/new/reset")
+@app.post("/security/bot")
 async def security_bot(request: Request):
     validator = RequestValidator(settings.TWILIO_AUTH_TOKEN)
 
@@ -53,9 +53,13 @@ async def security_bot(request: Request):
     ):
         return {"message": "error"}
 
-    sender = form_.get("From")
+    Body = form_.get("Body")
     
     resp = MessagingResponse()
     msg = resp.message()
-    msg.body(f"Your reset link is https://example.com/reset/{temporary_password}")
-    return str(resp)
+
+    incoming_msg = Body.strip().lower()
+
+    response = bot_replay(incoming_msg)
+    msg.body(response)
+    return str(msg)
