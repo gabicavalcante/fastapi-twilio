@@ -43,6 +43,13 @@ $ pip install -r requirements.txt
 $  uvicorn app:app --reload
 ```
 
+#### rasa
+
+```
+$ rasa init
+$ rasa run --enable-api -m rasa/models/<model-name>.tar.gz
+```
+
 #### references
 
 - form data: 
