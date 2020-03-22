@@ -17,15 +17,15 @@ intent_ranking = {
     "affirm": ["Yes!", "OK", "great"],
     "bot_challenge": ["Yes, I'm!"],
     "mood_unhappy": [":("],
-    "ask_pizza": ["what type of pizza you want?"]
+    "ask_pizza": ["what type of pizza you want?"],
 }
 
 
 def bot_replay(text: str) -> str:
-    url = "http://localhost:5005/model/parse"  
-    payload = {'text': text}
+    url = "http://localhost:5005/model/parse"
+    payload = {"text": text}
     r = requests.post(url=url, data=json.dumps(payload))
-     
+
     intent = r.json()["intent"]["name"]
     intent_response = random.choice(intent_ranking.get(intent, ["I don't undestand"]))
     return intent_response
@@ -54,7 +54,7 @@ async def security_bot(request: Request):
         return {"message": "error"}
 
     Body = form_.get("Body")
-    
+
     resp = MessagingResponse()
     msg = resp.message()
 

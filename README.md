@@ -50,6 +50,7 @@ $ rasa run --enable-api -m rasa/models/<model-name>.tar.gz
 ### to run
 
 ```
+$ uvicorn app:app --reload
 $ curl -X POST -F 'From=+5454545454' -F 'Body=i want pizza' -H "X-Twilio-Signature: ..."  http://127.0.0.1:8000/bot
 ```
 
