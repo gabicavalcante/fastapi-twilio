@@ -54,6 +54,14 @@ $ uvicorn app:app --reload
 $ curl -X POST -F 'From=+5454545454' -F 'Body=i want pizza' -H "X-Twilio-Signature: ..."  http://127.0.0.1:8000/bot
 ```
 
+### test actions
+
+```
+$ rasa run actions
+$ curl -X POST --data '{ "sender": "Rasa1", "message": "sad" }' -H "Content-Type: application/json"  http://127.0.0.1:5005/webhooks/rest/webhook
+[{"recipient_id":"Rasa1","text":"Here is something to cheer you up:"},{"recipient_id":"Rasa1","image":"https:\/\/i.imgur.com\/nGF1K8f.jpg"},{"recipient_id":"Rasa1","text":"Did that help you?"}]%
+```
+
 #### references
 
 - form data:
