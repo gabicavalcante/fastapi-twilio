@@ -27,7 +27,7 @@ diff-match-patch==20121119
 ds-store==1.1.2
 enum34==1.1.6
 esmre==0.3.1
-Flask==0.10.1
+Flask==1.0
 Flask-Session==0.3.1
 funcsigs==1.0.2
 functools32==3.2.3.post2
