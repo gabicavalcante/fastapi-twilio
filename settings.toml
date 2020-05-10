@@ -1,0 +1,8 @@
+[default]
+RASA_URL = "http://localhost:5005"
+DEBUG = false
+CSRF_ENABLED = true
+
+[development]
+DEVELOPMENT = true
+DEBUG = true 

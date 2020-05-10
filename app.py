@@ -27,7 +27,7 @@ class Message(BaseModel):
 
 
 def bot_reply_intent(text: str) -> str:
-    url = "http://localhost:5005/model/parse"
+    url = f"{settings.RASA_URL}/model/parse"
     payload = {"text": text}
     r = requests.post(url=url, data=json.dumps(payload))
 
@@ -37,7 +37,7 @@ def bot_reply_intent(text: str) -> str:
 
 
 def bot_reply(sender: str, message: str) -> str:
-    url = "http://localhost:5005/webhooks/rest/webhook"
+    url = f"{settings.RASA_URL}/webhooks/rest/webhook"
     payload = { "sender": sender, "message": message } 
 
     r = requests.post(url=url, data=json.dumps(payload))
