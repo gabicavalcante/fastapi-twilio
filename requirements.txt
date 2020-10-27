@@ -20,7 +20,7 @@ ConfigArgParse==0.14.0
 configparser==4.0.2
 contextlib2==0.6.0.post1
 coverage==4.5.4
-cryptography==2.7
+cryptography==3.2
 darts.util.lru==0.5
 decorator==4.4.0
 diff-match-patch==20121119
