@@ -47,7 +47,7 @@ ipaddresses==0.0.2
 ipython==5.8.0
 ipython-genutils==0.2.0
 itsdangerous==1.1.0
-Jinja2==2.10
+Jinja2==2.11.3
 jsonpointer==2.0
 jsonref==0.2
 jsonschema==3.0.2
