@@ -51,7 +51,7 @@ Jinja2==2.10
 jsonpointer==2.0
 jsonref==0.2
 jsonschema==3.0.2
-lxml==3.4.4
+lxml==4.9.1
 lz4==1.1.0
 mac-alias==2.0.7
 Markdown==2.6.1
